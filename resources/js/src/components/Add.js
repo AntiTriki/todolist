@@ -21,11 +21,10 @@ const Add = ()=> {
             setLoading(false);
         }
     };
-    if(loading){
-
-    }
+   
     return (
       <AppContainer title="Agregar Tarea">
+          
           <form>
               <div className='form-group'>
                   <label>Titulo</label>

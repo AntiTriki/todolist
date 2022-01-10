@@ -5390,6 +5390,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var axios = window.axios;
+var token = document.head.querySelector('meta[name="csrf-token"]');
 var BASE_API_URL = 'http://localhost:8000/api';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   getAllTasks: function getAllTasks() {
@@ -5398,10 +5399,10 @@ var BASE_API_URL = 'http://localhost:8000/api';
   getOneTask: function getOneTask(id) {
     return axios.get("".concat(BASE_API_URL, "/tasks/").concat(id, "/edit"));
   },
-  addTask: function addTask(post) {
+  addTask: function addTask(task) {
     return axios.post("".concat(BASE_API_URL, "/tasks"), task);
   },
-  updateTask: function updateTask(post, id) {
+  updateTask: function updateTask(task, id) {
     return axios.put("".concat(BASE_API_URL, "/tasks/").concat(id), task);
   },
   deleteTask: function deleteTask(id) {
@@ -5515,8 +5516,6 @@ var Add = function Add() {
       return _ref.apply(this, arguments);
     };
   }();
-
-  if (loading) {}
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_AppContainer__WEBPACK_IMPORTED_MODULE_3__["default"], {
     title: "Agregar Tarea",
@@ -5774,15 +5773,15 @@ var Home = function Home() {
       });
     }
 
-    return tasks.map(function (task) {
+    return tasks.map(function (task, i) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
           children: task.id
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+        }, task.id), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
           children: task.title
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+        }, task.title), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
           children: task.description
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("td", {
+        }, task.description), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("td", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
             className: "btn btn-warning",
             to: "/tasks/".concat(task.id),
@@ -5792,7 +5791,7 @@ var Home = function Home() {
             children: "Eliminar"
           })]
         })]
-      }, "{pos}");
+      }, i);
     });
   };
 
@@ -5817,7 +5816,7 @@ var Home = function Home() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
               children: "Accion"
             })]
-          })
+          }, 'yo')
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tbody", {
           children: renderTasks()
         })]

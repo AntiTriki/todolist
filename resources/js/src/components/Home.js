@@ -32,11 +32,11 @@ const Home =() =>{
                 </tr>
             )
         }
-        return tasks.map((task) =>(
-            <tr key="{pos}">
-                    <td>{task.id}</td>
-                    <td>{task.title}</td>
-                    <td>{task.description}</td>
+        return tasks.map((task,i) =>(
+            <tr key={i}>
+                    <td key={task.id}>{task.id}</td>
+                    <td key={task.title}>{task.title}</td>
+                    <td key={task.description}>{task.description}</td>
                     <td>
                         <Link className="btn btn-warning" to = {`/tasks/${task.id}`}>Editar</Link>
                         <button className="btn btn-danger" >Eliminar</button>
@@ -51,7 +51,7 @@ const Home =() =>{
             <div className="table-responsive">
             <table className="table table-striped mt-4">
                 <thead> 
-                    <tr>
+                    <tr key='yo'>
                         <th>ID</th>
                         <th>Titulo</th>
                         <th>Descripcion</th>
