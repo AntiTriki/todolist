@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+//Auth::routes();
+
+Route::get('/{any?}',function(){
+    return view('welcome');
+})->where('any','^(?!api).*$');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

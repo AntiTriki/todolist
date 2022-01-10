@@ -11286,3 +11286,8 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body {
+  padding: 1em;
+  background: #020024;
+  background: linear-gradient(90deg, #020024 0%, #e9e9e9 0%, #00d4ff 100%);
+}
