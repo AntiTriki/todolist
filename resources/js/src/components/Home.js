@@ -2,20 +2,21 @@ import React,{useEffect,useState} from "react";
 import { BrowserRouter as Router, Switch,Route,Link } from "react-router-dom";
 import AppContainer from "./AppContainer";
 import api from '../api';
-import { postCss } from "laravel-mix";
+
 
 const Home =() =>{
+    const[tasks,setTasks]=useState(null);
     useEffect(()=>{
         api.getAllTasks().then(res =>{
             const result = res.data;
-            setPosts(result.data)
+            setTasks(result.data)
 
         })
     },[])
     const renderTasks =() =>{
         if(!tasks){
             return(
-                <tr>
+                <tr key="{tasks.length}">
                     <td colSpan="4">
                         Cargando tareas...
                     </td>
@@ -32,13 +33,13 @@ const Home =() =>{
             )
         }
         return tasks.map((task) =>(
-            <tr>
+            <tr key="{pos}">
                     <td>{task.id}</td>
                     <td>{task.title}</td>
                     <td>{task.description}</td>
                     <td>
-                        <link className="btn btn-warning" to = {`/tasks/${tarea.id}`}>Editar</link>
-                        <button className="btn btn-warning" to = {`/tasks/${tarea.id}`}>Eliminar</button>
+                        <Link className="btn btn-warning" to = {`/tasks/${task.id}`}>Editar</Link>
+                        <button className="btn btn-danger" >Eliminar</button>
                     </td>
             </tr>
         ))
