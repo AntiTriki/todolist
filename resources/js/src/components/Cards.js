@@ -1,24 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import api from '../api';
 
-function Example() {
+function Cards() {
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">Example Component</div>
+        <div className="card draggable shadow-sm" id="cd1" draggable="true" ondragstart="drag(event)">
+                                <div className="card-body p-2">
+                                    <div className="card-title">
+                                       
+                                        <a href="" className="lead font-weight-light">TSK-154</a>
+                                    </div>
+                                    <p> This is a description of a item on the board. </p>
+                                    <button className="btn btn-primary btn-sm">View</button>
+                                </div>
+                            </div>
+        );
+};
 
-                        <div className="card-body">I'm an example component!</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-}
+export default Cards;
 
-export default Example;
 
-if (document.getElementById('example')) {
-    ReactDOM.render(<Example />, document.getElementById('example'));
-}

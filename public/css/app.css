@@ -11291,3 +11291,15 @@ body {
   background: #020024;
   background: linear-gradient(90deg, #020024 0%, #e9e9e9 0%, #00d4ff 100%);
 }
+
+.card.draggable {
+  margin-bottom: 1rem;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.droppable {
+  background-color: var(--success);
+  min-height: 120px;
+  margin-bottom: 1rem;
+}
